@@ -5,7 +5,7 @@ if [[ -d $HOME/bin ]]; then
   mkdir $HOME/bin
   mkdir $HOME/completion.d
 fi
-mv terraform bin/terraform
+mv terraform $HOME/bin/terraform
 wget "https://raw.githubusercontent.com/Bash-it/bash-it/master/completion/available/terraform.completion.bash" -O $HOME/completion.d/terraform
 export PATH=$PATH:$HOME/bin
 source $HOME/completion.d/terraform
