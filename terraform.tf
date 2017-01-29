@@ -4,6 +4,7 @@ provider "google" {
 }
 resource "google_storage_bucket" "handson_bucket" {
     name = "${var.bucket}"
+    force_destroy = true
 }
 resource "google_compute_instance" "handson_instance" {
   name = "handson-vm"
