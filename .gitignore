@@ -9,4 +9,5 @@ terraform.completion.bash
 # Module directory
 .terraform/
 
-
+# Original variable file
+my-variable.tf
