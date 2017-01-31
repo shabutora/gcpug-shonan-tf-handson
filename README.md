@@ -20,11 +20,9 @@
   3. [ ] GCSバケットの作成
   8. [ ] インスタンスの作成
 1. step-3
-  5. [ ] startup-scriptの用意
-6. [ ] 静的IPアドレスの取得
-7. [ ] Firewall Ruleの作成
-    - [ ] ディスクのアタッチ
-    - [ ] 静的IPアドレスの割り当て
+  5. [ ] startup-scriptの作成
+  1. [ ] ディスクの作成
+  2. [ ] targetリソースを指定して実行する
 
 ## Cloud Shell
 
