@@ -6,6 +6,11 @@ resource "google_storage_bucket" "handson_bucket" {
     name = "${var.bucket}"
     force_destroy = true
 }
+resource "google_storage_bucket_object" "startup-script" {
+    name = "startup-script.sh"
+    source = "./startup-script.sh"
+    bucket = "${var.bucket}"
+}
 resource "google_compute_instance" "handson_instance" {
   name = "handson-vm"
   zone = "us-central1-a"
@@ -21,7 +26,9 @@ resource "google_compute_instance" "handson_instance" {
       nat_ip = ""
     }
   }
-  metadata_startup_script = "echo 'hello world' > /hello.txt"
+  metadata {
+    startup-script-url = "gs://${var.bucket}/startup-script.sh"
+  }
   service_account {
     scopes = ["compute-ro", "storage-ro"]
   }
