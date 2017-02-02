@@ -10,6 +10,7 @@ resource "google_storage_bucket_object" "startup-script" {
     name = "startup-script.sh"
     source = "./startup-script.sh"
     bucket = "${var.bucket}"
+    depends_on = ["google_storage_bucket.handson_bucket"]
 }
 resource "google_compute_instance" "handson_instance" {
   name = "handson-vm"
