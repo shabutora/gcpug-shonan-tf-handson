@@ -2,7 +2,7 @@
 
 # Mound disk
 if [ -d "/data" ]; then
-  mkdir -p /data/elasticsearch
+  mkdir -p /data
   sudo mkfs.ext4 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
   sudo mount -o discard,defaults /dev/sdb /data
   echo UUID="$(blkid -s UUID -o value /dev/sdb)" /data ext4 discard,defaults 0 2 | tee -a /etc/fstab
