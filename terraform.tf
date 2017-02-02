@@ -17,6 +17,11 @@ resource "google_compute_instance" "handson_instance" {
   zone = "us-central1-a"
   machine_type = "n1-standard-1"
   tags = ["http-server", "https-server", "app-server"]
+  depends_on = ["google_compute_disk.data_disk"]
+  disk {
+    name = "${google_compute_disk.data_disk.name}"
+    auto_delete = false
+  }
   disk {
     image = "debian-cloud/debian-8"
     size = 10
@@ -33,4 +38,9 @@ resource "google_compute_instance" "handson_instance" {
   service_account {
     scopes = ["compute-ro", "storage-ro"]
   }
+}
+resource "google_compute_disk" "data_disk" {
+  name = "handson-disk"
+  size = 10
+  type = "pd-standard"
 }
