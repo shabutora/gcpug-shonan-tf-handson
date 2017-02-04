@@ -2,7 +2,7 @@
 
 # Mound disk
 EX_DIR="/data"
-if [ -d "$EX_DIR" ]; then
+if [ ! -e "$EX_DIR" ]; then
   mkdir -p $EX_DIR
   sudo mkfs.ext4 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
   sudo mount -o discard,defaults /dev/sdb $EX_DIR
@@ -10,7 +10,7 @@ if [ -d "$EX_DIR" ]; then
 fi
 
 # Install docker
-if [ -n "$(which docker)" ]; then
+if [ -z "$(which docker)" ]; then
   apt-get update && apt-get install -y  curl \
                                         apt-transport-https \
                                         ca-certificates \
