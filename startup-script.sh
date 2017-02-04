@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Mound disk
-if [ -d "/data" ]; then
-  mkdir -p /data
+EX_DIR="/data"
+if [ -d "$EX_DIR" ]; then
+  mkdir -p $EX_DIR
   sudo mkfs.ext4 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb
-  sudo mount -o discard,defaults /dev/sdb /data
-  echo UUID="$(blkid -s UUID -o value /dev/sdb)" /data ext4 discard,defaults 0 2 | tee -a /etc/fstab
+  sudo mount -o discard,defaults /dev/sdb $EX_DIR
+  echo UUID="$(blkid -s UUID -o value /dev/sdb)" $EX_DIR ext4 discard,defaults 0 2 | tee -a /etc/fstab
 fi
 
 # Install docker
