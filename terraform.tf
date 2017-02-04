@@ -23,7 +23,7 @@ resource "google_compute_instance" "handson_instance" {
     size = 10
   }
   disk {
-    name = "${google_compute_disk.data_disk.self_link}"
+    disk = "${google_compute_disk.data_disk.self_link}"
     auto_delete = false
   }
   network_interface {
