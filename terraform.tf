@@ -19,12 +19,12 @@ resource "google_compute_instance" "handson_instance" {
   tags = ["http-server", "https-server", "app-server"]
   depends_on = ["google_compute_disk.data_disk"]
   disk {
-    name = "${google_compute_disk.data_disk.name}"
-    auto_delete = false
-  }
-  disk {
     image = "debian-cloud/debian-8"
     size = 10
+  }
+  disk {
+    name = "${google_compute_disk.data_disk.self_link}"
+    auto_delete = false
   }
   network_interface {
     network = "default"
