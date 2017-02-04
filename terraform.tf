@@ -14,7 +14,7 @@ resource "google_storage_bucket_object" "startup-script" {
 }
 resource "google_compute_instance" "handson_instance" {
   name = "handson-vm"
-  zone = "us-central1-a"
+  zone = "${var.zone}"
   machine_type = "n1-standard-1"
   tags = ["http-server", "https-server", "app-server"]
   depends_on = ["google_compute_disk.data_disk"]
@@ -43,4 +43,5 @@ resource "google_compute_disk" "data_disk" {
   name = "handson-disk"
   size = 10
   type = "pd-standard"
+  zone = "${var.zone}"
 }
