@@ -1,6 +1,6 @@
 #!/bin/bash
 # terraform
-wget "https://releases.hashicorp.com/terraform/0.8.4/terraform_0.8.4_linux_amd64.zip" -O terraform.zip
+wget "https://releases.hashicorp.com/terraform/0.9.3/terraform_0.9.3_linux_amd64.zip" -O terraform.zip
 unzip terraform.zip
 if [[ -d $HOME/bin ]]; then
   mkdir $HOME/bin
